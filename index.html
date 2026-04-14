@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HAFEN // REBORN COLLISION</title>
+<title>HAFEN // COLLISION FIELD</title>
 
 <style>
 body{
@@ -14,156 +14,93 @@ font-family: Arial, sans-serif;
 overflow:hidden;
 }
 
-.container{
-padding:70px 8%;
-text-align:center;
-position:relative;
-z-index:2;
-}
-
-.title{
-font-size:60px;
-letter-spacing:10px;
-font-weight:900;
-animation:glitch 2s infinite;
-}
-
-.subtitle{
-opacity:0.6;
-margin-bottom:50px;
-}
-
-.block{
-margin:40px auto;
-padding:30px;
-border:1px solid rgba(255,255,255,0.15);
-transition:0.4s;
-max-width:700px;
-backdrop-filter: blur(5px);
-}
-
-.block:hover{
-transform:scale(1.03);
-border-color:#fff;
-}
-
-.state{
-font-size:18px;
-font-weight:700;
-margin-bottom:10px;
-letter-spacing:3px;
-}
-
-.text{
-opacity:0.9;
-line-height:1.6;
-}
-
-/* GLITCH EFFECT */
-@keyframes glitch {
-0% { transform: translate(0); text-shadow: 2px 0 red, -2px 0 blue; }
-20% { transform: translate(-2px,2px); }
-40% { transform: translate(2px,-2px); text-shadow: -2px 0 red, 2px 0 blue; }
-60% { transform: translate(0); }
-80% { transform: translate(1px,-1px); }
-100% { transform: translate(0); }
-}
-
-/* background pulse */
-.bg{
+#field{
 position:absolute;
-top:0;
-left:0;
 width:100%;
 height:100%;
-z-index:1;
-background: radial-gradient(circle at center, #111 0%, #000 70%);
-animation:pulse 6s infinite;
+top:0;
+left:0;
 }
 
-@keyframes pulse{
-0% { filter: brightness(1); }
-50% { filter: brightness(1.4); }
-100% { filter: brightness(1); }
+.word{
+position:absolute;
+font-size:14px;
+opacity:0.9;
+white-space:nowrap;
+mix-blend-mode: difference;
 }
 
-.chaos{ color:#ff3b3b; }
-.silence{ color:#7aa2ff; }
-.energy{ color:#ffd000; }
-.flow{ color:#00ff9d; }
-
-.footer{
-margin-top:60px;
-opacity:0.3;
-font-size:12px;
+.center{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:40px;
+letter-spacing:12px;
+font-weight:900;
 }
+
+.sub{
+position:absolute;
+top:58%;
+left:50%;
+transform:translate(-50%,-50%);
+opacity:0.5;
+}
+
 </style>
-
 </head>
 
 <body>
 
-<div class="bg"></div>
+<div class="center">HAFEN</div>
+<div class="sub">REBORN COLLISION FIELD</div>
 
-<div class="container">
-
-<div class="title">HAFEN</div>
-<div class="subtitle">REBORN // COLLISION SYSTEM ACTIVE</div>
-
-<div class="block chaos">
-<div class="state">CHAOS ENTRY</div>
-<div class="text">
-Sepultura → Motörhead → Van Halen<br>
-ORGANISM BREAKING INTO MOTION
-</div>
-</div>
-
-<div class="block silence">
-<div class="state">INNER FALL</div>
-<div class="text">
-George Michael → Depeche Mode → Elton John<br>
-SILENCE THAT STILL WEIGHS MORE THAN SOUND
-</div>
-</div>
-
-<div class="block energy">
-<div class="state">SURVIVAL RHYTHM</div>
-<div class="text">
-James Brown → ZZ Top → Creedence<br>
-BODY KEEPS MOVING EVEN WITHOUT PERMISSION
-</div>
-</div>
-
-<div class="block flow">
-<div class="state">FLOAT STATE</div>
-<div class="text">
-Scorpions → Bon Jovi → Doobie Brothers<br>
-SOMETHING LIKE HOPE, BUT NOT QUIET
-</div>
-</div>
-
-<div class="block">
-<div class="state">CORE SIGNAL</div>
-<div class="text">
-THIS IS NOT A BRAND.<br>
-THIS IS A COLLISION FIELD.<br><br>
-Everything plays at once.<br>
-Nothing is separated.<br>
-And still — it holds.
-</div>
-</div>
-
-<div class="footer">
-HAFEN // REBORN PHASE // SYSTEM ONLINE
-</div>
-
-</div>
+<div id="field"></div>
 
 <script>
-// micro “alive feeling”
-setInterval(() => {
-document.body.style.filter = Math.random() > 0.95 ? "contrast(120%) brightness(1.2)" : "none";
-}, 200);
+
+const phrases = [
+"SEPULTURA // MOTORHEAD // VAN HALEN",
+"GEORGE MICHAEL IN THE STATIC",
+"DEPECHE MODE INSIDE SILENCE",
+"JAMES BROWN KEEPS THE BODY ALIVE",
+"SCORPIONS // BON JOVI // DOOBIE BROTHERS",
+"HOPE IS NOT CALM",
+"HOPE IS NOISE",
+"WE DON’T ORGANIZE SOUND",
+"WE SURVIVE INSIDE IT",
+"THIS IS NOT A BRAND",
+"THIS IS WHAT REMAINS"
+];
+
+const field = document.getElementById("field");
+
+function spawn(){
+const el = document.createElement("div");
+el.className = "word";
+el.innerText = phrases[Math.floor(Math.random()*phrases.length)];
+
+el.style.left = Math.random()*100 + "vw";
+el.style.top = Math.random()*100 + "vh";
+el.style.fontSize = (10 + Math.random()*20) + "px";
+
+field.appendChild(el);
+
+// some die, some stay
+setTimeout(()=> {
+el.remove();
+}, 4000 + Math.random()*4000);
+}
+
+setInterval(spawn, 200);
+
+// micro shake of reality
+setInterval(()=>{
+document.body.style.transform =
+`translate(${(Math.random()-0.5)*2}px, ${(Math.random()-0.5)*2}px)`;
+}, 80);
+
 </script>
 
 </body>
