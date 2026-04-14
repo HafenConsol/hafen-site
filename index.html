@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HAFEN // COLLISION FIELD</title>
+<title>HAFEN // REBORN</title>
 
 <style>
 body{
@@ -11,97 +11,100 @@ margin:0;
 background:#000;
 color:#fff;
 font-family: Arial, sans-serif;
-overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
 }
 
-#field{
-position:absolute;
-width:100%;
-height:100%;
-top:0;
-left:0;
+.container{
+max-width:800px;
+padding:40px;
+text-align:left;
 }
 
-.word{
-position:absolute;
-font-size:14px;
-opacity:0.9;
-white-space:nowrap;
-mix-blend-mode: difference;
-}
-
-.center{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-font-size:40px;
-letter-spacing:12px;
+.title{
+font-size:52px;
+letter-spacing:10px;
 font-weight:900;
+margin-bottom:10px;
 }
 
-.sub{
-position:absolute;
-top:58%;
-left:50%;
-transform:translate(-50%,-50%);
+.subtitle{
 opacity:0.5;
+margin-bottom:40px;
+letter-spacing:4px;
 }
 
+.text{
+font-size:16px;
+line-height:1.9;
+opacity:0.9;
+}
+
+.line{
+margin:14px 0;
+}
+
+.emphasis{
+color:#fff;
+font-weight:700;
+}
+
+.muted{
+opacity:0.6;
+}
+
+footer{
+margin-top:50px;
+opacity:0.3;
+font-size:12px;
+letter-spacing:2px;
+}
 </style>
+
 </head>
 
 <body>
 
-<div class="center">HAFEN</div>
-<div class="sub">REBORN COLLISION FIELD</div>
+<div class="container">
 
-<div id="field"></div>
+<div class="title">HAFEN</div>
+<div class="subtitle">REBORN COLLISION FIELD</div>
 
-<script>
+<div class="text">
 
-const phrases = [
-"SEPULTURA // MOTORHEAD // VAN HALEN",
-"GEORGE MICHAEL IN THE STATIC",
-"DEPECHE MODE INSIDE SILENCE",
-"JAMES BROWN KEEPS THE BODY ALIVE",
-"SCORPIONS // BON JOVI // DOOBIE BROTHERS",
-"HOPE IS NOT CALM",
-"HOPE IS NOISE",
-"WE DON’T ORGANIZE SOUND",
-"WE SURVIVE INSIDE IT",
-"THIS IS NOT A BRAND",
-"THIS IS WHAT REMAINS"
-];
+<div class="line emphasis">it starts loud — and never asks permission</div>
 
-const field = document.getElementById("field");
+<div class="line">there is movement even when nothing moves</div>
 
-function spawn(){
-const el = document.createElement("div");
-el.className = "word";
-el.innerText = phrases[Math.floor(Math.random()*phrases.length)];
+<div class="line muted">something inside refuses to stop</div>
 
-el.style.left = Math.random()*100 + "vw";
-el.style.top = Math.random()*100 + "vh";
-el.style.fontSize = (10 + Math.random()*20) + "px";
+<div class="line">not peace — not silence — something between impact and memory</div>
 
-field.appendChild(el);
+<div class="line emphasis">hope, but not soft</div>
 
-// some die, some stay
-setTimeout(()=> {
-el.remove();
-}, 4000 + Math.random()*4000);
-}
+<div class="line">hope like pressure in the chest</div>
 
-setInterval(spawn, 200);
+<div class="line">hope like something still burning under everything</div>
 
-// micro shake of reality
-setInterval(()=>{
-document.body.style.transform =
-`translate(${(Math.random()-0.5)*2}px, ${(Math.random()-0.5)*2}px)`;
-}, 80);
+<div class="line muted">systems collapse but rhythm remains</div>
 
-</script>
+<div class="line">we don’t organize chaos</div>
+
+<div class="line">we survive inside its structure</div>
+
+<div class="line emphasis">this is not branding</div>
+
+<div class="line emphasis">this is residue</div>
+
+</div>
+
+<footer>
+HAFEN // REBORN PHASE
+</footer>
+
+</div>
 
 </body>
 </html>
